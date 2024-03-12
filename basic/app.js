@@ -51,6 +51,7 @@ const app = createApp({
       // ...dataProduct,
       maximum: 50,
       products: null,
+      cart: [],
     };
   },
   mounted() {
@@ -60,6 +61,11 @@ const app = createApp({
         this.products = data;
         console.log(this.products);
       });
+  },
+  methods: {
+    addItem: function (product) {
+      this.cart.push(product);
+    },
   },
 });
 

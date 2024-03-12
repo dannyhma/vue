@@ -12,42 +12,65 @@
     <title>Basic Vue</title>
   </head>
   <body>
-    <div class="container mt-3" id="app">
-      <div class="form-inline mr-auto">
-        <label for="" class="font-weight-bold mr-2">Max</label>
-        <input
-          type="number"
-          type="number"
-          aria-label="search"
-          class="form-control w-25"
-          v-model="maximum"
-        />
-      </div>
-      <input
-        type="range"
-        min="0"
-        max="200"
-        aria-label="slider"
-        v-model="maximum"
-      />
-      <div class="row d-flex mb-3 align-items-center" v-for="item in products">
-        <div v-if="item.price <= Number(maximum)">
-          <div class="row">
-            <div class="col-4">
-              <img
-                class="img-fluid"
-                :src="item.image"
-                :alt="item.image_title"
-                aria-label="random-image"
-              />
+    <div class="container" id="app">
+      <!-- navbar -->
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="row w-100">
+            <div class="col-md-8 navbar-text">
+              <b>Cart: </b>
+              <span class="badge text-bg-success">{{ cart.length }}</span>
             </div>
-            <div class="col">
-              <h3 class="text-info">{{ item.name }}</h3>
-              <p class="mb-0 text-justify">{{ item.description }}</p>
-              <div class="h5 text-end">Rp. {{ item.price }}</div>
+            <div class="col-md-4">
+              <div class="row align-items-center">
+                <label
+                  for="maximum"
+                  class="col-form-label col-auto font-weight-bold"
+                  >Max</label
+                >
+                <div class="col">
+                  <input
+                    type="number"
+                    id="maximum"
+                    class="form-control"
+                    v-model="maximum"
+                    aria-label="search"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </nav>
+      <!-- end of navbar -->
+
+      <div class="row d-flex mb-3 align-items-center">
+        <template v-for="item in products">
+          <div v-if="item.price <= Number(maximum)" class="col-md-12">
+            <div class="row">
+              <div class="col-1 m-auto">
+                <button class="btn btn-danger" v-on:click="addItem(item)">
+                  +
+                </button>
+              </div>
+              <div class="col-md-4">
+                <img
+                  class="img-fluid"
+                  :src="item.image"
+                  :alt="item.image_title"
+                  aria-label="random-image"
+                />
+              </div>
+              <div class="col-md-7 d-flex align-items-center">
+                <div>
+                  <h3 class="text-info">{{ item.name }}</h3>
+                  <p class="mb-0 text-justify">{{ item.description }}</p>
+                  <div class="h2 mt-3">Rp. {{ item.price }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
     </div>
 
