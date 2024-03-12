@@ -13,6 +13,23 @@
   </head>
   <body>
     <div class="container mt-3" id="app">
+      <div class="form-inline mr-auto">
+        <label for="" class="font-weight-bold mr-2">Max</label>
+        <input
+          type="number"
+          type="number"
+          aria-label="search"
+          class="form-control w-25"
+          v-model="maximum"
+        />
+      </div>
+      <input
+        type="range"
+        min="0"
+        max="200"
+        aria-label="slider"
+        v-model="maximum"
+      />
       <div class="row d-flex mb-3 align-items-center" v-for="item in products">
         <div v-if="item.price <= Number(maximum)">
           <div class="row">
@@ -33,6 +50,7 @@
         </div>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -1,6 +1,6 @@
 const { createApp } = Vue;
 const dataProduct = {
-  maximum: 100,
+  maximum: 50,
   products: [
     {
       id: '01',
@@ -26,11 +26,27 @@ const dataProduct = {
       desc: 'Vue.js adalah sebuah framework JavaScript yang digunakan untuk membangun antarmuka pengguna (UI) yang interaktif dan reaktif. Diciptakan oleh Evan You pada tahun 2014, Vue.js telah menjadi salah satu alat yang populer dalam pengembangan web karena kemudahannya dalam dipelajari dan digunakan.',
       price: '99',
     },
+    {
+      id: '04',
+      image: 'https://unsplash.it/600/350.jpg?image=345',
+      name: 'Vue.js',
+      title: 'Vue.js',
+      desc: 'Vue.js adalah sebuah framework JavaScript yang digunakan untuk membangun antarmuka pengguna (UI) yang interaktif dan reaktif. Diciptakan oleh Evan You pada tahun 2014, Vue.js telah menjadi salah satu alat yang populer dalam pengembangan web karena kemudahannya dalam dipelajari dan digunakan.',
+      price: '30',
+    },
+    {
+      id: '05',
+      image: 'https://unsplash.it/600/350.jpg?image=236',
+      name: 'Vue.js',
+      title: 'Vue.js',
+      desc: 'Vue.js adalah sebuah framework JavaScript yang digunakan untuk membangun antarmuka pengguna (UI) yang interaktif dan reaktif. Diciptakan oleh Evan You pada tahun 2014, Vue.js telah menjadi salah satu alat yang populer dalam pengembangan web karena kemudahannya dalam dipelajari dan digunakan.',
+      price: '10',
+    },
   ],
 };
 
 createApp({
-  setup() {
+  data() {
     return {
       ...dataProduct,
     };
