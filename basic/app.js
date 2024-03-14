@@ -17,9 +17,21 @@ const app = createApp({
     fetch('http://hplussport.com/api/products/order/price')
       .then((response) => response.json())
       .then((data) => {
-        this.products = data;
-        console.log(this.products);
+        // Mengonversi nilai harga menjadi angka untuk setiap produk
+        this.products = data.map((product) => ({
+          ...product,
+          price: parseFloat(product.price),
+        }));
+        // console.log(this.products);
+      })
+      .catch((error) => {
+        // console.error('Error fetching data:', error);
       });
+  },
+  filters: {
+    currencyFormat: function (value) {
+      return 'Rp' + Number.parseFloat(value).toFixed(2);
+    },
   },
   computed: {
     sliderState: function () {

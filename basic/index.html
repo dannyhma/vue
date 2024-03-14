@@ -66,8 +66,8 @@
 
       <transition
         name="custom"
-        enter-active-class="animate__fadeInDown"
-        leave-active-class="animate__slideOutRight"
+        enter-active-class="animate__animated animate__fadeInDown"
+        leave-active-class="animate__animated animate__slideOutRight"
       >
         <div v-if="style.sliderStatus">
           <div class="col" :class="sliderState">
@@ -89,8 +89,10 @@
         My Shop
       </p>
 
+      <!-- <transition-group name="fade"> </transition-group> -->
+
       <div class="row d-flex mb-3 align-items-center">
-        <template v-for="item in products">
+        <template v-for="(item, index) in products" :key="item.id">
           <div v-if="item.price <= Number(maximum)" class="col-md-12">
             <div class="row">
               <div class="col-1 m-auto">
@@ -110,7 +112,7 @@
                 <div>
                   <h3 class="text-info">{{ item.name }}</h3>
                   <p class="mb-0 text-justify">{{ item.description }}</p>
-                  <div class="h2 mt-3">Rp. {{ item.price }}</div>
+                  <div class="h2 mt-3">{{ item.price | currencyFormat }}</div>
                 </div>
               </div>
             </div>
