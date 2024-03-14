@@ -9,6 +9,17 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+      integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css"
+    />
+    <link rel="stylesheet" href="app.css" />
     <title>Basic Vue</title>
   </head>
   <body>
@@ -17,11 +28,11 @@
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <div class="row w-100">
-            <div class="col-md-8 navbar-text">
+            <div class="col-md-6 navbar-text">
               <b>Cart: </b>
               <span class="badge text-bg-success">{{ cart.length }}</span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
               <div class="row align-items-center">
                 <label
                   for="maximum"
@@ -39,10 +50,44 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-1">
+              <button
+                class="btn btn-sm btn-outline-success"
+                aria-label="dollar-sign"
+                v-on:click="style.sliderStatus = !style.sliderStatus"
+              >
+                <i class="fas fa-dollar-sign"></i>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
       <!-- end of navbar -->
+
+      <transition
+        name="custom"
+        enter-active-class="animate__fadeInDown"
+        leave-active-class="animate__slideOutRight"
+      >
+        <div v-if="style.sliderStatus">
+          <div class="col" :class="sliderState">
+            <input
+              type="range"
+              class="form-control-plaintext"
+              id="slider"
+              v-model="maximum"
+              aria-label="slider"
+            />
+          </div>
+        </div>
+      </transition>
+
+      <p
+        :class="style.head"
+        :style="{'width': 'auto', 'text-align': 'center', 'font-size': style.fontSize + 'px'}"
+      >
+        My Shop
+      </p>
 
       <div class="row d-flex mb-3 align-items-center">
         <template v-for="item in products">
