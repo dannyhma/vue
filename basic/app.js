@@ -28,11 +28,13 @@ const app = createApp({
         // console.error('Error fetching data:', error);
       });
   },
+
   filters: {
     currencyFormat: function (value) {
       return 'Rp' + Number.parseFloat(value).toFixed(2);
     },
   },
+
   computed: {
     sliderState: function () {
       return this.style.sliderStatus ? 'd-flex' : 'd-none';
@@ -44,5 +46,4 @@ const app = createApp({
     },
   },
 });
-
 app.mount('#app');

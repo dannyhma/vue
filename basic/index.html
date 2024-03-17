@@ -29,8 +29,31 @@
         <div class="container-fluid">
           <div class="row w-100">
             <div class="col-md-6 navbar-text">
-              <b>Cart: </b>
-              <span class="badge text-bg-success">{{ cart.length }}</span>
+              <button
+                class="btn btn-success btn-sm dropdown-toggle"
+                id="dropDownCart"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="dropdown"
+              >
+                <b>Cart: </b>
+                <span class="badge text-bg-success">{{ cart.length }}</span>
+              </button>
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-label="dropDownCart"
+              >
+                <div v-for="(item, index) in cart" :key="index">
+                  <div class="dropdown-item-text text-nowrap text-right">
+                    <span class="badge text-bg-warning align-text-top mr-1">
+                      {{ item.qty }}
+                    </span>
+                    {{ item.name }}
+                    <b>Rp.{{ item.price | currencyFormat }}</b>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-md-5">
               <div class="row align-items-center">
@@ -112,7 +135,9 @@
                 <div>
                   <h3 class="text-info">{{ item.name }}</h3>
                   <p class="mb-0 text-justify">{{ item.description }}</p>
-                  <div class="h2 mt-3">{{ item.price | currencyFormat }}</div>
+                  <div class="h2 mt-3">
+                    Rp.{{ item.price | currencyFormat }}
+                  </div>
                 </div>
               </div>
             </div>
