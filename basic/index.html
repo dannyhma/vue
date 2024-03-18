@@ -49,8 +49,8 @@
                     <span class="badge text-bg-warning align-text-top mr-1">
                       {{ item.qty }}
                     </span>
-                    {{ item.name }}
-                    <b>Rp.{{ item.price | currencyFormat }}</b>
+                    {{ item.product.name }}
+                    <b>{{ item.product.price * item.qty | currencyFormat }}</b>
                   </div>
                 </div>
               </div>
@@ -135,9 +135,7 @@
                 <div>
                   <h3 class="text-info">{{ item.name }}</h3>
                   <p class="mb-0 text-justify">{{ item.description }}</p>
-                  <div class="h2 mt-3">
-                    Rp.{{ item.price | currencyFormat }}
-                  </div>
+                  <div class="h2 mt-3">{{ item.price | currencyFormat }}</div>
                 </div>
               </div>
             </div>

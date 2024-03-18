@@ -13,6 +13,7 @@ const app = createApp({
       },
     };
   },
+
   mounted() {
     fetch('http://hplussport.com/api/products/order/price')
       .then((response) => response.json())
@@ -29,7 +30,13 @@ const app = createApp({
       });
   },
 
-  filters: {
+  // filters: {
+  //   currencyFormat: function (value) {
+  //     return 'Rp' + Number.parseFloat(value).toFixed(2);
+  //   },
+  // },
+
+  computed: {
     currencyFormat: function (value) {
       return 'Rp' + Number.parseFloat(value).toFixed(2);
     },
@@ -40,9 +47,17 @@ const app = createApp({
       return this.style.sliderStatus ? 'd-flex' : 'd-none';
     },
   },
+
   methods: {
-    addItem: function (product) {
-      this.cart.push(product);
+    addItem(product) {
+      const productIndex = this.cart.findIndex(
+        (item) => item.product.id === product.id
+      );
+      if (productIndex !== -1) {
+        this.cart[productIndex].qty++;
+      } else {
+        this.cart.push({ product: product, qty: 1 });
+      }
     },
   },
 });
