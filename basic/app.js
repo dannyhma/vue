@@ -81,4 +81,24 @@ const app = createApp({
     },
   },
 });
+
+app.component('price', {
+  data() {
+    return {};
+  },
+  props: {
+    value: Number,
+    prefix: {
+      type: String,
+      default: 'Rp',
+    },
+    precision: {
+      type: Number,
+      default: 1,
+    },
+  },
+  template:
+    '<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>',
+});
+
 app.mount('#app');

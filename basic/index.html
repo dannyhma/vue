@@ -40,7 +40,11 @@
                 <b>Cart: </b>
                 <span class="badge text-bg-success">{{ cartQty }}</span>
                 <i class="fa fa-shopping-basket mx-2" aria-hidden="true">
-                  {{ cartTotal | currencyFormat }}
+                  <price
+                    :value="cartTotal"
+                    :prefix="'$'"
+                    :precision="2"
+                  ></price>
                 </i>
               </button>
               <div
@@ -53,7 +57,13 @@
                       {{ item.qty }}
                     </span>
                     {{ item.product.name }}
-                    <b>{{ item.product.price * item.qty | currencyFormat }}</b>
+                    <b>
+                      <price
+                        :value="item.product.price * item.qty"
+                        :prefix="'$'"
+                        :precision="2"
+                      ></price>
+                    </b>
                     <a
                       href="#"
                       class="badge bg-danger text-white text-decoration-none"
@@ -144,7 +154,13 @@
                 <div>
                   <h3 class="text-info">{{ item.name }}</h3>
                   <p class="mb-0 text-justify">{{ item.description }}</p>
-                  <div class="h2 mt-3">{{ item.price | currencyFormat }}</div>
+                  <div class="h2 mt-3">
+                    <price
+                      :value="item.price"
+                      :prefix="'$'"
+                      :precision="2"
+                    ></price>
+                  </div>
                 </div>
               </div>
             </div>
