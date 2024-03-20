@@ -30,21 +30,29 @@ const app = createApp({
       });
   },
 
-  // filters: {
-  //   currencyFormat: function (value) {
-  //     return 'Rp' + Number.parseFloat(value).toFixed(2);
-  //   },
-  // },
-
-  computed: {
+  filters: {
     currencyFormat: function (value) {
       return 'Rp' + Number.parseFloat(value).toFixed(2);
     },
   },
 
   computed: {
-    sliderState: function () {
+    sliderState() {
       return this.style.sliderStatus ? 'd-flex' : 'd-none';
+    },
+    cartTotal() {
+      let sum = 0;
+      for (key in this.cart) {
+        sum = sum + this.cart[key].product.price * this.cart[key].qty;
+      }
+      return sum;
+    },
+    cartQty() {
+      let qty = 0;
+      for (key in this.cart) {
+        qty = qty + this.cart[key].qty;
+      }
+      return qty;
     },
   },
 
@@ -57,6 +65,18 @@ const app = createApp({
         this.cart[productIndex].qty++;
       } else {
         this.cart.push({ product: product, qty: 1 });
+      }
+    },
+    deleteItem(product) {
+      const productIndex = this.cart.findIndex(
+        (item) => item.product.id === product.id
+      );
+      if (productIndex !== -1) {
+        if (this.cart[productIndex].qty > 1) {
+          this.cart[productIndex].qty--;
+        } else {
+          this.cart.splice(productIndex, 1);
+        }
       }
     },
   },

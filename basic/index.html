@@ -38,7 +38,10 @@
                 aria-label="dropdown"
               >
                 <b>Cart: </b>
-                <span class="badge text-bg-success">{{ cart.length }}</span>
+                <span class="badge text-bg-success">{{ cartQty }}</span>
+                <i class="fa fa-shopping-basket mx-2" aria-hidden="true">
+                  {{ cartTotal | currencyFormat }}
+                </i>
               </button>
               <div
                 class="dropdown-menu dropdown-menu-right"
@@ -51,6 +54,12 @@
                     </span>
                     {{ item.product.name }}
                     <b>{{ item.product.price * item.qty | currencyFormat }}</b>
+                    <a
+                      href="#"
+                      class="badge bg-danger text-white text-decoration-none"
+                      v-on:click="deleteItem(item.product)"
+                      >-</a
+                    >
                   </div>
                 </div>
               </div>
