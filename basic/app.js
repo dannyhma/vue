@@ -101,4 +101,40 @@ app.component('price', {
     '<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>',
 });
 
+app.component('productlist', {
+  props: ['products', 'maximum'],
+  template: `
+    <div class="row d-flex mb-3 align-items-center">
+      <template v-for="(item, index) in products" :key="item.id">
+        <div v-if="item.price <= Number(maximum)" class="col-md-12">
+          <div class="row">
+            <div class="col-1 m-auto">
+              <button class="btn btn-danger" @click="$emit('add', item)">
+                +
+              </button>
+            </div>
+            <div class="col-md-4">
+              <img
+                class="img-fluid"
+                :src="item.image"
+                :alt="item.image_title"
+                aria-label="random-image"
+              />
+            </div>
+            <div class="col-md-7 d-flex align-items-center">
+              <div>
+                <h3 class="text-info">{{ item.name }}</h3>
+                <p class="mb-0 text-justify">{{ item.description }}</p>
+                <div class="h2 mt-3">
+                  <price :value="Number(item.price)" :prefix="'$'" :precision="2"></price>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  `,
+});
+
 app.mount('#app');
