@@ -2,7 +2,7 @@ const { createApp } = Vue;
 const app = createApp({
   data() {
     return {
-      slugText: 'The Quick #(*!&@ Brown 29',
+      slugText: "The Quick #(*!&@ Brown 29",
     };
   },
   computed: {
@@ -10,9 +10,9 @@ const app = createApp({
       var date = new Date();
       return (
         String(date.getHours()) +
-        ':' +
+        ":" +
         String(date.getMinutes()) +
-        ':' +
+        ":" +
         String(date.getSeconds())
       );
     },
@@ -21,10 +21,10 @@ const app = createApp({
       return (
         this.slugText
           .toLowerCase()
-          .replace(/[^\w]+/g, '-')
-          .replace(/-+/g, '-')
-          .replace(/^-|-$/g, '') +
-        '-' +
+          .replace(/[^\w]+/g, "-")
+          .replace(/-+/g, "-")
+          .replace(/^-|-$/g, "") +
+        "-" +
         // this.now()
         this.now
       );
@@ -44,4 +44,4 @@ const app = createApp({
   },
 });
 
-app.mount('#app');
+app.mount("#app");
