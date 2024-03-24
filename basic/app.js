@@ -7,7 +7,7 @@ const app = createApp({
       products: null,
       cart: [],
       style: {
-        head: ["h1"],
+        head: ['h1'],
         fontSize: 72,
         sliderStatus: false,
       },
@@ -15,7 +15,7 @@ const app = createApp({
   },
 
   mounted() {
-    fetch("http://hplussport.com/api/products/order/price")
+    fetch('http://hplussport.com/api/products/order/price')
       .then((response) => response.json())
       .then((data) => {
         // Mengonversi nilai harga menjadi angka untuk setiap produk
@@ -32,13 +32,13 @@ const app = createApp({
 
   filters: {
     currencyFormat: function (value) {
-      return "Rp" + Number.parseFloat(value).toFixed(2);
+      return 'Rp' + Number.parseFloat(value).toFixed(2);
     },
   },
 
   computed: {
     sliderState() {
-      return this.style.sliderStatus ? "d-flex" : "d-none";
+      return this.style.sliderStatus ? 'd-flex' : 'd-none';
     },
     cartTotal() {
       let sum = 0;
@@ -59,7 +59,7 @@ const app = createApp({
   methods: {
     addItem(product) {
       const productIndex = this.cart.findIndex(
-        (item) => item.product.id === product.id,
+        (item) => item.product.id === product.id
       );
       if (productIndex !== -1) {
         this.cart[productIndex].qty++;
@@ -69,7 +69,7 @@ const app = createApp({
     },
     deleteItem(product) {
       const productIndex = this.cart.findIndex(
-        (item) => item.product.id === product.id,
+        (item) => item.product.id === product.id
       );
       if (productIndex !== -1) {
         if (this.cart[productIndex].qty > 1) {
@@ -82,7 +82,7 @@ const app = createApp({
   },
 });
 
-app.component("price", {
+app.component('price', {
   data() {
     return {};
   },
@@ -90,7 +90,7 @@ app.component("price", {
     value: Number,
     prefix: {
       type: String,
-      default: "Rp",
+      default: 'Rp',
     },
     precision: {
       type: Number,
@@ -98,11 +98,11 @@ app.component("price", {
     },
   },
   template:
-    "<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>",
+    '<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>',
 });
 
-app.component("productlist", {
-  props: ["products", "maximum"],
+app.component('productlist', {
+  props: ['products', 'maximum'],
   template: `
     <div class="row d-flex mb-3 align-items-center">
       <template v-for="(item, index) in products" :key="item.id">
@@ -137,4 +137,4 @@ app.component("productlist", {
   `,
 });
 
-app.mount("#app");
+app.mount('#app');

@@ -1,21 +1,21 @@
 <script setup>
-import { ref } from "vue";
+import { defineProps } from "vue";
 
 const props = defineProps({
-  value: Number,
+  value: {
+    type: Number,
+  },
   prefix: {
     type: String,
-    default: "Rp",
+    default: "$",
   },
   precision: {
     type: Number,
-    default: 1,
+    default: 2,
   },
 });
 </script>
 
 <template>
-  <span>{{
-    this.prefix + Number.parseFloat(this.value).toFixed(this.precision)
-  }}</span>
+  <span>{{ prefix + Number.parseFloat(value).toFixed(precision) }}</span>
 </template>
