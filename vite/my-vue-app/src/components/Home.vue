@@ -2,6 +2,7 @@
 import { ref, reactive, onMounted } from "vue";
 import ProductList from "./ProductList.vue";
 import PriceSlider from "./PriceSlider.vue";
+import Navbar from "./Navbar.vue";
 
 const state = reactive({
   maximum: 20,
@@ -40,13 +41,14 @@ const addItem = (product) => {
 <template>
   <div class="container mx-auto">
     <div>
-      <h1 class="text-4xl font-bold">IDShop</h1>
+      <Navbar />
     </div>
     <div>
       <PriceSlider
         :sliderStatus="state.sliderStatus"
         :maximum.sync="state.maximum"
         @update:maximum="state.maximum = $event"
+        class="pt-24"
       />
     </div>
     <div>
