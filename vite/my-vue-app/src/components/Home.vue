@@ -56,7 +56,7 @@ const addItem = (product) => {
         :products="state.products"
         :maximum="state.maximum"
         @add="addItem"
-        class="pt-4"
+        class="pt-9"
       />
     </div>
   </div>
