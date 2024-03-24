@@ -35,6 +35,16 @@
               >About</a
             >
           </li>
+          <li>
+            <div class="items-center">
+              <input
+                type="text"
+                id="search-navbar"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                placeholder="Search..."
+              />
+            </div>
+          </li>
         </ul>
       </div>
     </div>
