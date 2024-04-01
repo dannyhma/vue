@@ -4,7 +4,7 @@
   <nav
     class="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white p-8 dark:border-gray-600 dark:bg-gray-900"
   >
-    <div class="ml-36 flex items-center justify-between">
+    <div class="flex items-center justify-between">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img
           src="https://flowbite.com/docs/images/logo.svg"
@@ -16,7 +16,7 @@
           >Flowshop</span
         >
       </a>
-      <div class="mr-36 hidden w-full md:block md:w-auto" id="navbar-default">
+      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul
           class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900"
         >
