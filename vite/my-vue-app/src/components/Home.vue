@@ -1,7 +1,6 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { computed, ref, reactive, onMounted } from "vue";
 import ProductList from "./ProductList.vue";
-import PriceSlider from "./PriceSlider.vue";
 import Navbar from "./Navbar.vue";
 
 const state = reactive({
@@ -36,6 +35,22 @@ const addItem = (product) => {
     state.cart.push({ product: product, qty: 1 });
   }
 };
+
+const cartTotal = computed(() => {
+  let sum = 0;
+  for (let key in this.cart) {
+    sum = sum + this.cart[key].product.price * this.cart[key].qty;
+  }
+  return sum;
+});
+
+const cartQty = computed(() => {
+  let qty = 0;
+  for (let key in this.cart) {
+    qty = qty + this.cart[key].qty;
+  }
+  return qty;
+});
 </script>
 
 <template>
@@ -43,20 +58,19 @@ const addItem = (product) => {
     <div>
       <Navbar />
     </div>
-    <div>
+    <!-- <div>
       <PriceSlider
         :sliderStatus="state.sliderStatus"
         :maximum.sync="state.maximum"
         @update:maximum="state.maximum = $event"
-        class="pt-24"
       />
-    </div>
+    </div> -->
     <div>
       <ProductList
         :products="state.products"
         :maximum="state.maximum"
         @add="addItem"
-        class="pt-9"
+        class="pt-16"
       />
     </div>
   </div>
