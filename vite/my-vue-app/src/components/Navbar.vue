@@ -11,7 +11,7 @@ const props = defineProps(["cart", "cartQty", "carTotal"]);
   <nav
     class="fixed start-0 top-0 z-50 w-full border-b bg-gray-50 p-6 shadow-sm"
   >
-    <div class="ml-36 flex items-center justify-between">
+    <div class="flex items-center justify-between">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img
           src="https://flowbite.com/docs/images/logo.svg"
@@ -24,61 +24,9 @@ const props = defineProps(["cart", "cartQty", "carTotal"]);
         >
       </a>
       <div class="mr-36 hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul class="mt-4 flex flex-row items-center space-x-10 border-0 p-0">
-          <li>
-            <div class="row w-100">
-              <div class="col-md-6 navbar-text">
-                <button
-                  class="btn btn-success btn-sm dropdown-toggle"
-                  id="dropDownCart"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  aria-label="dropdown"
-                >
-                  <b>Cart: </b>
-                  <span class="badge text-bg-success">{{ cartQty }}</span>
-                  <font-awesome-icon
-                    :icon="['fas', 'cart-shopping']"
-                    class="mx-2"
-                    aria-hidden="true"
-                  >
-                    <price
-                      :value="Number(cartTotal)"
-                      :prefix="'$'"
-                      :precision="2"
-                    />
-                  </font-awesome-icon>
-                </button>
-                <div
-                  class="dropdown-menu dropdown-menu-right"
-                  aria-label="dropDownCart"
-                >
-                  <div v-for="(item, index) in cart" :key="index">
-                    <div class="dropdown-item-text text-nowrap text-right">
-                      <span class="badge text-bg-warning mr-1 align-text-top">
-                        {{ item.qty }}
-                      </span>
-                      {{ item.product.name }}
-                      <b>
-                        <price
-                          :value="Number(item.product.price * item.qty)"
-                          :prefix="'$'"
-                          :precision="2"
-                        />
-                      </b>
-                      <a
-                        href="#"
-                        class="badge bg-danger text-decoration-none text-white"
-                        v-on:click="deleteItem(item.product)"
-                        >-</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+        <ul
+          class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900"
+        >
           <li>
             <a
               href="#"
